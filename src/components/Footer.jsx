@@ -102,7 +102,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="https://github.com/Sriman1729/new"
+                href="https://github.com/Sriman1729/RaituMitra"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 hover:text-emerald-600 dark:hover:text-emerald-300 transition"
