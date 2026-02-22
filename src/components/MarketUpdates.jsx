@@ -24,7 +24,7 @@ export default function MarketUpdates() {
   return (
     <div className="max-w-6xl mx-auto p-6">
       {/* Header */}
-      <h2 className="text-3xl font-bold text-violet-800 dark:text-violet-200 mb-8 text-center">
+      <h2 className="text-3xl font-bold text-emerald-800 dark:text-emerald-200 mb-8 text-center">
         🌾 Market & Agriculture Updates
       </h2>
 
@@ -32,8 +32,8 @@ export default function MarketUpdates() {
 {/* 🔔 Notifications Section with Dynamic Colors */}
 <section className="mb-10">
   <div className="flex items-center gap-2 mb-3">
-    <Bell className="text-violet-600" />
-    <h3 className="text-xl font-semibold text-violet-900 dark:text-violet-100">
+    <Bell className="text-emerald-600" />
+    <h3 className="text-xl font-semibold text-emerald-900 dark:text-emerald-100">
       Latest Notifications
     </h3>
   </div>
@@ -108,17 +108,17 @@ export default function MarketUpdates() {
       {/* MSP Section */}
       <section className="mb-10">
         <div className="flex items-center gap-2 mb-3">
-          <IndianRupee className="text-violet-600" />
-          <h3 className="text-xl font-semibold text-violet-900 dark:text-violet-100">
+          <IndianRupee className="text-emerald-600" />
+          <h3 className="text-xl font-semibold text-emerald-900 dark:text-emerald-100">
             Minimum Support Prices (MSP)
           </h3>
         </div>
         {mspList.length === 0 ? (
           <p className="text-gray-600 dark:text-gray-300">No MSP records available yet.</p>
         ) : (
-          <div className="overflow-x-auto rounded-lg border border-violet-200 dark:border-violet-800">
+          <div className="overflow-x-auto rounded-lg border border-emerald-200 dark:border-emerald-800">
             <table className="w-full text-left">
-              <thead className="bg-violet-100 dark:bg-violet-800/50">
+              <thead className="bg-emerald-100 dark:bg-emerald-800/50">
                 <tr>
                   <th className="p-3">Crop</th>
                   <th className="p-3">Price (₹/Quintal)</th>
@@ -131,7 +131,7 @@ export default function MarketUpdates() {
                     key={item.id}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="border-b border-violet-200 dark:border-violet-800 hover:bg-violet-50 dark:hover:bg-violet-900/30 transition"
+                    className="border-b border-emerald-200 dark:border-emerald-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition"
                   >
                     <td className="p-3 font-medium">{item.crop}</td>
                     <td className="p-3">₹{(item.price || item.value)?.toLocaleString("en-IN")}</td>
@@ -149,8 +149,8 @@ export default function MarketUpdates() {
       {/* Seeds Section */}
       <section className="mb-16">
         <div className="flex items-center gap-2 mb-3">
-          <Leaf className="text-violet-600" />
-          <h3 className="text-xl font-semibold text-violet-900 dark:text-violet-100">
+          <Leaf className="text-emerald-600" />
+          <h3 className="text-xl font-semibold text-emerald-900 dark:text-emerald-100">
             Certified Seed Listings
           </h3>
         </div>
@@ -163,9 +163,9 @@ export default function MarketUpdates() {
                 key={s.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="p-4 rounded-xl border border-violet-200 dark:border-violet-800 bg-white dark:bg-violet-900/40 shadow-sm hover:shadow-md transition"
+                className="p-4 rounded-xl border border-emerald-200 dark:border-emerald-800 bg-white dark:bg-emerald-900/40 shadow-sm hover:shadow-md transition"
               >
-                <h4 className="text-lg font-semibold text-violet-800 dark:text-violet-100">{s.crop}</h4>
+                <h4 className="text-lg font-semibold text-emerald-800 dark:text-emerald-100">{s.crop}</h4>
                 <p className="text-sm text-gray-700 dark:text-gray-300">Variety: <strong>{s.variety || s.value}</strong></p>
                 <p className="text-sm text-gray-700 dark:text-gray-300">Certification: {s.certification || "N/A"}</p>
                 <p className="text-sm text-gray-700 dark:text-gray-300">Vendor: {s.vendor || "N/A"}</p>
@@ -207,37 +207,37 @@ export default function MarketUpdates() {
       {/* 🌱 Future Expansions Section */}
       <section className="mt-16 mb-10">
         <div className="flex items-center gap-2 mb-3">
-          <Rocket className="text-violet-600" />
-          <h3 className="text-xl font-semibold text-violet-900 dark:text-violet-100">
+          <Rocket className="text-emerald-600" />
+          <h3 className="text-xl font-semibold text-emerald-900 dark:text-emerald-100">
             Future Expansions 🚀
           </h3>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4">
-          <div className="p-4 border border-violet-200 dark:border-violet-800 bg-violet-50/60 dark:bg-violet-900/30 rounded-xl">
+          <div className="p-4 border border-emerald-200 dark:border-emerald-800 bg-emerald-50/60 dark:bg-emerald-900/30 rounded-xl">
             <div className="flex items-center gap-2 mb-1">
-              <CloudSun className="text-violet-600" />
-              <h4 className="font-semibold text-violet-900 dark:text-violet-100">Live Weather Alerts</h4>
+              <CloudSun className="text-emerald-600" />
+              <h4 className="font-semibold text-emerald-900 dark:text-emerald-100">Live Weather Alerts</h4>
             </div>
             <p className="text-sm text-gray-700 dark:text-gray-300">
               Real-time rain & temperature warnings integrated with satellite APIs for local forecasts.
             </p>
           </div>
 
-          <div className="p-4 border border-violet-200 dark:border-violet-800 bg-violet-50/60 dark:bg-violet-900/30 rounded-xl">
+          <div className="p-4 border border-emerald-200 dark:border-emerald-800 bg-emerald-50/60 dark:bg-emerald-900/30 rounded-xl">
             <div className="flex items-center gap-2 mb-1">
-              <TrendingUp className="text-violet-600" />
-              <h4 className="font-semibold text-violet-900 dark:text-violet-100">Market Price Tracking</h4>
+              <TrendingUp className="text-emerald-600" />
+              <h4 className="font-semibold text-emerald-900 dark:text-emerald-100">Market Price Tracking</h4>
             </div>
             <p className="text-sm text-gray-700 dark:text-gray-300">
               Compare MSP with daily market prices from nearby mandis and online agri portals.
             </p>
           </div>
 
-          <div className="p-4 border border-violet-200 dark:border-violet-800 bg-violet-50/60 dark:bg-violet-900/30 rounded-xl">
+          <div className="p-4 border border-emerald-200 dark:border-emerald-800 bg-emerald-50/60 dark:bg-emerald-900/30 rounded-xl">
             <div className="flex items-center gap-2 mb-1">
-              <Sprout className="text-violet-600" />
-              <h4 className="font-semibold text-violet-900 dark:text-violet-100">AI Crop Health Monitor</h4>
+              <Sprout className="text-emerald-600" />
+              <h4 className="font-semibold text-emerald-900 dark:text-emerald-100">AI Crop Health Monitor</h4>
             </div>
             <p className="text-sm text-gray-700 dark:text-gray-300">
               Upload crop images for instant pest & disease detection powered by computer vision models.

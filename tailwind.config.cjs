@@ -59,12 +59,12 @@ module.exports = {
           5: "hsl(var(--chart-5))",
         },
 
-        /* 💜 ReactBits-style purple theme */
-        violet: {
+        /* 💜 ReactBits-style emerald theme */
+        emerald: {
           950: "#0b0b0f", // page background
           900: "#1a1325", // card background
           800: "#2a1a47", // glow layer
-          600: "#8b5cf6", // bright violet
+          600: "#8b5cf6", // bright emerald
           400: "#a78bfa",
           300: "#c084fc",
         },
@@ -105,7 +105,7 @@ module.exports = {
       boxShadow: {
         soft: "0 4px 20px rgba(0,0,0,0.08)",
         glow: "0 0 25px rgba(139,92,246,0.4)",
-        "violet-glow": "0 0 40px -10px rgba(139,92,246,0.7)",
+        "emerald-glow": "0 0 40px -10px rgba(139,92,246,0.7)",
       },
 
       backdropBlur: {

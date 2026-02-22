@@ -16,7 +16,7 @@ const PHASE_COLORS = {
   weeding: "bg-teal-100 dark:bg-teal-900/40 border-teal-300 dark:border-teal-700",
   fertilizer: "bg-yellow-100 dark:bg-yellow-900/40 border-yellow-300 dark:border-yellow-700",
   pest: "bg-rose-100 dark:bg-rose-900/40 border-rose-300 dark:border-rose-700",
-  harvest: "bg-purple-100 dark:bg-purple-900/40 border-purple-300 dark:border-purple-700",
+  harvest: "bg-emerald-100 dark:bg-emerald-900/40 border-emerald-300 dark:border-emerald-700",
   post: "bg-stone-100 dark:bg-stone-900/40 border-stone-300 dark:border-stone-700",
   custom: "bg-neutral-100 dark:bg-neutral-900/40 border-neutral-300 dark:border-neutral-700",
   growth: "bg-emerald-50 dark:bg-emerald-900/30 border-emerald-200 dark:border-emerald-700",

@@ -19,12 +19,12 @@ export default function InputSuppliers() {
       { name: "Nuziveedu Seeds", type: "Vegetable & Fibre Crop Seeds", contact: "040-30551500" },
     ],
     fertilizer: [
-      { name: "Agro Fertilizer Store", type: "Fertilizers & Pesticides", contact: "9876543210" },
+      { name: "Agro Fertilizer Store", type: "Fertilizers & Pesticides", contact: "70005 28397" },
       { name: "IFFCO Fertilizer Dealer", type: "Urea, DAP, Complex Fertilizers", contact: "18001801551" },
       { name: "Krishi Chemicals", type: "Bio-Fertilizers & Plant Growth Regulators", contact: "9988665544" },
-      { name: "Coromandel International", type: "Fertilizers, Nutrients & Crop Protection", contact: "040-66997000" },
-      { name: "Zuari Agro Chemicals", type: "Fertilizers & Agro Inputs", contact: "0832-2594200" },
-      { name: "RCF (Rashtriya Chemicals & Fertilizers)", type: "Urea & Complex Fertilizers", contact: "022-25522200" },
+      { name: "Coromandel International", type: "Fertilizers, Nutrients & Crop Protection", contact: "044 42525345" },
+      { name: "Zuari Agro Chemicals", type: "Fertilizers & Agro Inputs", contact: "+91 832 2592180" },
+      { name: "RCF (Rashtriya Chemicals & Fertilizers)", type: "Urea & Complex Fertilizers", contact: "022-2552 3000" },
     ],
     machinery: [
       { name: "FarmTech Equipment", type: "Tractors & Farm Implements", contact: "9988776655" },
@@ -52,7 +52,7 @@ export default function InputSuppliers() {
     <div className="relative">
       {/* Aurora Background for Glow */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-32 -left-32 h-[50rem] w-[50rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-fuchsia-400/30 via-violet-400/30 to-green-400/30 dark:from-fuchsia-600/30 dark:via-violet-600/20 dark:to-indigo-600/20 animate-pulse" />
+        <div className="absolute -top-32 -left-32 h-[50rem] w-[50rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-green-400/30 via-emerald-400/30 to-green-400/30 dark:from-green-600/30 dark:via-emerald-600/20 dark:to-indigo-600/20 animate-pulse" />
       </div>
 
       {/* Header */}
@@ -62,7 +62,7 @@ export default function InputSuppliers() {
         transition={{ duration: 0.6 }}
         className="text-center mb-10 relative z-10"
       >
-        <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-violet-500 to-fuchsia-500 dark:from-fuchsia-400 dark:via-violet-400 dark:to-indigo-400 mb-3">
+        <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-emerald-500 to-green-500 dark:from-green-400 dark:via-emerald-400 dark:to-indigo-400 mb-3">
           🛒 Input Suppliers Directory
         </h2>
         <p className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -79,7 +79,7 @@ export default function InputSuppliers() {
           transition={{ delay: i * 0.1, duration: 0.5 }}
           className="mb-12 relative z-10"
         >
-          <h3 className="text-xl font-semibold mb-5 text-gray-800 dark:text-gray-100 bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-violet-500 to-fuchsia-500 dark:from-fuchsia-400 dark:via-violet-400 dark:to-indigo-400">
+          <h3 className="text-xl font-semibold mb-5 text-gray-800 dark:text-gray-100 bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-emerald-500 to-green-500 dark:from-green-400 dark:via-emerald-400 dark:to-indigo-400">
             {sectionTitles[sectionKey]}
           </h3>
 
@@ -107,7 +107,7 @@ export default function InputSuppliers() {
                       {item.type}
                     </p>
 
-                    <div className="flex items-center gap-2 text-sm font-medium text-violet-700 dark:text-violet-300">
+                    <div className="flex items-center gap-2 text-sm font-medium text-emerald-700 dark:text-emerald-300">
                       📞
                       <a
                         href={`tel:${item.contact}`}
@@ -117,7 +117,7 @@ export default function InputSuppliers() {
                       </a>
                       <button
                         onClick={() => copyNumber(item.contact)}
-                        className="text-gray-500 dark:text-gray-400 hover:text-violet-600 dark:hover:text-violet-400 transition"
+                        className="text-gray-500 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition"
                       >
                         <Copy size={14} />
                       </button>

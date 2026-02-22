@@ -109,7 +109,7 @@ export default function EnhancedTechnicalSupport() {
     <div className="relative">
       {/* Aurora Glow Background */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-32 -left-32 h-[50rem] w-[50rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-fuchsia-400/30 via-violet-400/30 to-green-400/30 dark:from-fuchsia-600/30 dark:via-violet-600/20 dark:to-indigo-600/20 animate-pulse" />
+        <div className="absolute -top-32 -left-32 h-[50rem] w-[50rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-green-400/30 via-emerald-400/30 to-green-400/30 dark:from-green-600/30 dark:via-emerald-600/20 dark:to-indigo-600/20 animate-pulse" />
       </div>
 
       {/* Header */}
@@ -119,7 +119,7 @@ export default function EnhancedTechnicalSupport() {
         transition={{ duration: 0.6 }}
         className="text-center mb-10 relative z-10"
       >
-        <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-violet-500 to-fuchsia-500 dark:from-fuchsia-400 dark:via-violet-400 dark:to-indigo-400 mb-3">
+        <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-emerald-500 to-green-500 dark:from-green-400 dark:via-emerald-400 dark:to-indigo-400 mb-3">
           📞 Farmer Helpline & Technical Support
         </h2>
         <p className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -134,7 +134,7 @@ export default function EnhancedTechnicalSupport() {
           placeholder="🔍 Search support or service..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full p-3 rounded-xl border border-gray-300 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur-md shadow-sm focus:ring-2 focus:ring-violet-400 dark:focus:ring-fuchsia-400 transition"
+          className="w-full p-3 rounded-xl border border-gray-300 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur-md shadow-sm focus:ring-2 focus:ring-emerald-400 dark:focus:ring-green-400 transition"
         />
       </div>
 
@@ -149,7 +149,7 @@ export default function EnhancedTechnicalSupport() {
             className="relative overflow-hidden bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-xl border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-[0_0_25px_-8px_rgba(139,92,246,0.5)] transition-all duration-300"
           >
             {/* Gradient Border Accent */}
-            <div className="absolute left-0 top-0 h-full w-[4px] bg-gradient-to-b from-fuchsia-400 via-violet-400 to-green-400 dark:from-fuchsia-500 dark:via-violet-500 dark:to-indigo-500 rounded-l-xl"></div>
+            <div className="absolute left-0 top-0 h-full w-[4px] bg-gradient-to-b from-green-400 via-emerald-400 to-green-400 dark:from-green-500 dark:via-emerald-500 dark:to-indigo-500 rounded-l-xl"></div>
 
             <div className="p-6">
               <div className="flex items-center justify-between mb-3">
@@ -182,7 +182,7 @@ export default function EnhancedTechnicalSupport() {
                   {item.tel ? (
                     <a
                       href={`tel:${item.tel}`}
-                      className="text-sm font-medium text-violet-600 dark:text-violet-400 flex items-center gap-2 hover:underline"
+                      className="text-sm font-medium text-emerald-600 dark:text-emerald-400 flex items-center gap-2 hover:underline"
                     >
                       <Phone size={14} /> {item.contact}
                     </a>
@@ -193,7 +193,7 @@ export default function EnhancedTechnicalSupport() {
                   )}
                   <button
                     onClick={() => copyToClipboard(item.contact)}
-                    className="text-sm text-gray-500 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition"
+                    className="text-sm text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition"
                   >
                     <Copy size={14} />
                   </button>
@@ -204,7 +204,7 @@ export default function EnhancedTechnicalSupport() {
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-semibold text-fuchsia-600 dark:text-fuchsia-400 hover:underline flex items-center gap-1"
+                    className="text-sm font-semibold text-green-600 dark:text-green-400 hover:underline flex items-center gap-1"
                   >
                     Learn More <LinkIcon size={14} />
                   </a>

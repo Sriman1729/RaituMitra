@@ -132,8 +132,8 @@ export default function Header() {
             to="/"
             className="flex items-center gap-2 font-extrabold text-xl tracking-tight group"
           >
-            <Leaf className="w-7 h-7 text-violet-400 group-hover:rotate-12 transition-transform duration-300" />
-            <span className="bg-gradient-to-r from-fuchsia-400 to-indigo-400 bg-clip-text text-transparent">
+            <Leaf className="w-7 h-7 text-emerald-400 group-hover:rotate-12 transition-transform duration-300" />
+            <span className="bg-gradient-to-r from-green-400 to-indigo-400 bg-clip-text text-transparent">
               Raitu Mitra
             </span>
           </Link>
@@ -148,15 +148,15 @@ export default function Header() {
                   to={link.to}
                   className={`relative px-2 py-1 rounded-md transition-all duration-300 group ${
                     isActive
-                      ? "text-violet-300 font-semibold"
+                      ? "text-emerald-300 font-semibold"
                       : darkMode
-                      ? "text-gray-300 hover:text-violet-300"
-                      : "text-gray-700 hover:text-violet-400"
+                      ? "text-gray-300 hover:text-emerald-300"
+                      : "text-gray-700 hover:text-emerald-400"
                   }`}
                 >
                   {link.name}
                   <span
-                    className={`absolute left-0 bottom-0 h-[2px] bg-violet-400 transition-all duration-300 ${
+                    className={`absolute left-0 bottom-0 h-[2px] bg-emerald-400 transition-all duration-300 ${
                       isActive ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   />
@@ -173,12 +173,12 @@ export default function Header() {
                 onClick={() => setShowLang((s) => !s)}
                 className={`p-2 rounded-full transition ${
                   darkMode
-                    ? "bg-white/10 hover:bg-violet-500/20"
-                    : "bg-gray-200 hover:bg-violet-100"
+                    ? "bg-white/10 hover:bg-emerald-500/20"
+                    : "bg-gray-200 hover:bg-emerald-100"
                 }`}
                 aria-label="Choose language"
               >
-                <Globe className="w-5 h-5 text-violet-300" />
+                <Globe className="w-5 h-5 text-emerald-300" />
               </button>
 
               {showLang && (
@@ -201,7 +201,7 @@ export default function Header() {
                       placeholder="Search language…"
                       value={searchLang}
                       onChange={(e) => setSearchLang(e.target.value)}
-                      className={`w-full px-3 py-1.5 rounded-md border text-sm focus:ring-2 focus:ring-violet-500 outline-none ${
+                      className={`w-full px-3 py-1.5 rounded-md border text-sm focus:ring-2 focus:ring-emerald-500 outline-none ${
                         darkMode
                           ? "border-gray-700 bg-[#201a2e] text-gray-100"
                           : "border-gray-300 bg-gray-50 text-gray-800"
@@ -236,8 +236,8 @@ export default function Header() {
                             onClick={() => handleTranslate(lang.code)}
                             className={`w-full text-left px-4 py-2 transition ${
                               darkMode
-                                ? "text-gray-200 hover:bg-violet-900/40"
-                                : "text-gray-800 hover:bg-violet-100/40"
+                                ? "text-gray-200 hover:bg-emerald-900/40"
+                                : "text-gray-800 hover:bg-emerald-100/40"
                             }`}
                           >
                             {lang.label}
@@ -255,15 +255,15 @@ export default function Header() {
               onClick={() => setDarkMode(!darkMode)}
               className={`p-2 rounded-full transition ${
                 darkMode
-                  ? "bg-white/10 hover:bg-violet-500/20"
-                  : "bg-gray-200 hover:bg-violet-100"
+                  ? "bg-white/10 hover:bg-emerald-500/20"
+                  : "bg-gray-200 hover:bg-emerald-100"
               }`}
               aria-label="Toggle theme"
             >
               {darkMode ? (
                 <Sun className="w-5 h-5 text-yellow-300" />
               ) : (
-                <Moon className="w-5 h-5 text-violet-400" />
+                <Moon className="w-5 h-5 text-emerald-400" />
               )}
             </button>
 
@@ -272,13 +272,13 @@ export default function Header() {
               to="/profile"
               className={`hidden md:flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition ${
                 location.pathname === "/profile"
-                  ? "bg-violet-500/20 text-violet-200 ring-1 ring-violet-400/40"
+                  ? "bg-emerald-500/20 text-emerald-200 ring-1 ring-emerald-400/40"
                   : darkMode
-                  ? "bg-white/10 hover:bg-violet-500/20 text-gray-200"
-                  : "bg-gray-200 hover:bg-violet-100 text-gray-800"
+                  ? "bg-white/10 hover:bg-emerald-500/20 text-gray-200"
+                  : "bg-gray-200 hover:bg-emerald-100 text-gray-800"
               }`}
             >
-              <Sprout className="w-4 h-4 text-violet-400" />
+              <Sprout className="w-4 h-4 text-emerald-400" />
               <span>Profile</span>
             </Link>
 
@@ -287,14 +287,14 @@ export default function Header() {
               onClick={() => setMobileMenu((s) => !s)}
               className={`md:hidden p-2 rounded-full transition ${
                 darkMode
-                  ? "bg-white/10 hover:bg-violet-500/20"
-                  : "bg-gray-200 hover:bg-violet-100"
+                  ? "bg-white/10 hover:bg-emerald-500/20"
+                  : "bg-gray-200 hover:bg-emerald-100"
               }`}
             >
               {mobileMenu ? (
-                <X className="w-6 h-6 text-violet-400" />
+                <X className="w-6 h-6 text-emerald-400" />
               ) : (
-                <Menu className="w-6 h-6 text-violet-400" />
+                <Menu className="w-6 h-6 text-emerald-400" />
               )}
             </button>
           </div>
@@ -318,7 +318,7 @@ export default function Header() {
                   onClick={() => setMobileMenu(false)}
                   className={`block py-2 px-3 rounded-md text-sm transition ${
                     isActive
-                      ? "bg-violet-500/20 text-violet-200 font-semibold"
+                      ? "bg-emerald-500/20 text-emerald-200 font-semibold"
                       : darkMode
                       ? "hover:bg-white/10 text-gray-200"
                       : "hover:bg-gray-100 text-gray-700"

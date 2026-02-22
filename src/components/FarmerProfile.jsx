@@ -275,7 +275,7 @@ export default function FarmerProfile() {
             </div>
 
             {/* Saved Crops */}
-            <div className="bg-white dark:bg-neutral-900 p-6 rounded-lg shadow-sm border border-neutral-200 dark:border-neutral-800 border-l-4 border-l-purple-500">
+            <div className="bg-white dark:bg-neutral-900 p-6 rounded-lg shadow-sm border border-neutral-200 dark:border-neutral-800 border-l-4 border-l-emerald-500">
               <h2 className="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800 dark:text-gray-100">
                 <Bookmark /> Saved Crops
               </h2>

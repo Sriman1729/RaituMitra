@@ -224,7 +224,7 @@ export default function Profile() {
             <User /> My Profile
           </h1>
           <div className="flex gap-3">
-            <button onClick={exportToPDF} className="px-4 py-2 rounded-md bg-violet-600 text-white flex items-center gap-2">
+            <button onClick={exportToPDF} className="px-4 py-2 rounded-md bg-emerald-600 text-white flex items-center gap-2">
               <FileText size={16} /> Export
             </button>
             <button onClick={copyShareLink} className="px-4 py-2 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 flex items-center gap-2">
@@ -323,7 +323,7 @@ export default function Profile() {
       </h3>
       <p>
         NDVI Value:{" "}
-        <b className="text-violet-700">{profile.ndviValue.toFixed(2)}</b>{" "}
+        <b className="text-emerald-700">{profile.ndviValue.toFixed(2)}</b>{" "}
         {profile.ndviValue > 0.6 ? "🌿 Healthy" : "🟤 Stressed Vegetation"}
       </p>
     </div>
@@ -451,8 +451,8 @@ export default function Profile() {
                     }}
                     className={`px-3 py-1 rounded-full border flex items-center gap-1 text-sm transition ${
                       selected
-                        ? "bg-violet-600 text-white border-violet-600"
-                        : "bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-700 hover:bg-violet-100 dark:hover:bg-violet-800/30"
+                        ? "bg-emerald-600 text-white border-emerald-600"
+                        : "bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-700 hover:bg-emerald-100 dark:hover:bg-emerald-800/30"
                     }`}
                   >
                     <span>{crop.icon}</span> {crop.name}
@@ -464,7 +464,7 @@ export default function Profile() {
         </motion.div>
 
         {/* Smart Tip */}
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-gradient-to-br from-violet-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 shadow border border-violet-200 dark:border-gray-700">
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-gradient-to-br from-emerald-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 shadow border border-emerald-200 dark:border-gray-700">
           <h3 className="font-semibold mb-2">Smart Tip 🌿</h3>
           <p className="text-sm text-gray-700 dark:text-gray-300">{farmingTip()}</p>
         </motion.div>

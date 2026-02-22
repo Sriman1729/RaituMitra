@@ -41,6 +41,7 @@ import {
 /* ---------------------------
    Utilities & LocalStorage Hook
 ---------------------------- */
+const WEATHER_API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 const useLocalStorage = (key, initial) => {
   const [value, setValue] = useState(() => {
     try {
@@ -57,6 +58,12 @@ const useLocalStorage = (key, initial) => {
   }, [key, value]);
   return [value, setValue];
 };
+
+
+if (!WEATHER_API_KEY) {
+  console.error("❌ OpenWeather API key missing. Check your .env file");
+}
+
 
 /* ---------------------------
    Geocoding (state + district → lat/lon)
@@ -155,19 +162,19 @@ export default function WeatherDashboard() {
   const fetchWeatherByCoords = useCallback(
   async (lat, lon) => {
     if (!lat || !lon) return;
+    
     setStatus("loading");
 
-    const key = "f438baf46e45d28234c799897dc72268";
 
     // 1️⃣ ONLINE → fetch fresh
     if (navigator.onLine) {
       try {
         const [cur, fc] = await Promise.all([
+         axios.get(
+  `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${WEATHER_API_KEY}`
+),
           axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${key}`
-          ),
-          axios.get(
-            `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${key}`
+            `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${WEATHER_API_KEY}`
           ),
         ]);
 
@@ -311,7 +318,7 @@ export default function WeatherDashboard() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setUnit(unit === "C" ? "F" : "C")}
-              className="px-3 py-1 rounded-lg bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-semibold shadow hover:opacity-90"
+              className="px-3 py-1 rounded-lg bg-gradient-to-r from-emerald-500 to-green-500 text-white font-semibold shadow hover:opacity-90"
             >
               {unit === "C" ? "°C" : "°F"}
             </button>
@@ -341,7 +348,7 @@ export default function WeatherDashboard() {
   className="w-full md:w-1/3 rounded-lg px-4 py-3 border border-gray-300 dark:border-gray-700 
              bg-white/80 dark:bg-gray-800/70 backdrop-blur-sm 
              text-gray-800 dark:text-gray-200 shadow-sm 
-             focus:outline-none focus:ring-2 focus:ring-violet-400 
+             focus:outline-none focus:ring-2 focus:ring-emerald-400 
              transition-all duration-200"
 >
   {states.map((st) => (
@@ -355,7 +362,7 @@ export default function WeatherDashboard() {
   className="w-full md:w-1/3 rounded-lg px-4 py-3 border border-gray-300 dark:border-gray-700 
              bg-white/80 dark:bg-gray-800/70 backdrop-blur-sm 
              text-gray-800 dark:text-gray-200 shadow-sm 
-             focus:outline-none focus:ring-2 focus:ring-violet-400 
+             focus:outline-none focus:ring-2 focus:ring-emerald-400 
              transition-all duration-200"
 >
   {districts.map((d) => (
@@ -517,7 +524,7 @@ export default function WeatherDashboard() {
   whileHover={{ scale: 1.01 }}
   className="bg-white/70 dark:bg-white/10 backdrop-blur-xl p-6 rounded-2xl border border-white/20 shadow-lg"
 >
-  <h3 className="flex items-center gap-2 text-lg font-semibold mb-4 text-violet-500">
+  <h3 className="flex items-center gap-2 text-lg font-semibold mb-4 text-emerald-500">
     <LineChartIcon /> Temperature & Humidity (Next 12h)
   </h3>
   <div className="h-64">

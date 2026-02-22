@@ -61,7 +61,8 @@ async function fetchWeatherFromOpenWeather({ lat, lon }) {
       const tmax = item.main.temp_max;
       const tmin = item.main.temp_min;
       const rain = item.rain?.["3h"] || 0;
-      if (!dayMap[dateKey]) dayMap[dateKey] = { date: dateKey, tmax, tmin, rain };
+      if (!dayMap[dateKey])
+        dayMap[dateKey] = { date: dateKey, tmax, tmin, rain };
       else {
         dayMap[dateKey].tmax = Math.max(dayMap[dateKey].tmax, tmax);
         dayMap[dateKey].tmin = Math.min(dayMap[dateKey].tmin, tmin);
@@ -77,12 +78,35 @@ async function fetchWeatherFromOpenWeather({ lat, lon }) {
 
 /* ---------- sowing date helper ---------- */
 function midSowingDateFromWindow(sowingWindow) {
-  const now = new Date();
-  const y = now.getFullYear();
-  const fromDate = new Date(y, (sowingWindow.from?.m ?? 1) - 1, sowingWindow.from?.d ?? 1);
-  const toDate = new Date(y, (sowingWindow.to?.m ?? 1) - 1, sowingWindow.to?.d ?? 1);
-  const mid = new Date((fromDate.getTime() + toDate.getTime()) / 2);
-  return mid;
+  const y = new Date().getFullYear();
+  const fromDate = new Date(
+    y,
+    (sowingWindow.from?.m ?? 1) - 1,
+    sowingWindow.from?.d ?? 1
+  );
+  const toDate = new Date(
+    y,
+    (sowingWindow.to?.m ?? 1) - 1,
+    sowingWindow.to?.d ?? 1
+  );
+  return new Date((fromDate.getTime() + toDate.getTime()) / 2);
+}
+
+/* ---------- TIP RESOLVER (DATA ONLY) ---------- */
+function resolvePhaseTip(phase, crop, weather) {
+  const fallback = "Ensure field conditions are optimal before this stage.";
+  if (!phase?.tips) return fallback;
+  if (!weather || weather.length === 0) return phase.tips.default || fallback;
+
+  const totalRain = weather.reduce((s, d) => s + (d.rain ?? 0), 0);
+  const maxTemp = Math.max(...weather.map((d) => d.tmax ?? 0));
+
+  if (totalRain > 10 && phase.tips.rain) return phase.tips.rain;
+  if (maxTemp > crop.weather?.idealTempMax && phase.tips.heat)
+    return phase.tips.heat;
+  if (phase.tips.ideal) return phase.tips.ideal;
+
+  return phase.tips.default || fallback;
 }
 
 export default function FarmingCalendar({ defaultCropId = "paddy" }) {
@@ -90,9 +114,15 @@ export default function FarmingCalendar({ defaultCropId = "paddy" }) {
   const CROPS = cropsData;
 
   const [cropId, setCropId] = useState(defaultCropId);
-  const crop = useMemo(() => CROPS.find((c) => c.id === cropId) ?? CROPS[0], [cropId, CROPS]);
+  const crop = useMemo(
+    () => CROPS.find((c) => c.id === cropId) ?? CROPS[0],
+    [cropId, CROPS]
+  );
 
-  const sowingDate = useMemo(() => midSowingDateFromWindow(crop.sowingWindow), [crop]);
+  const sowingDate = useMemo(
+    () => midSowingDateFromWindow(crop.sowingWindow),
+    [crop]
+  );
 
   const [weather, setWeather] = useState([]);
   useEffect(() => {
@@ -110,17 +140,28 @@ export default function FarmingCalendar({ defaultCropId = "paddy" }) {
   }, [weather, crop]);
 
   const maturityGDD = crop.gddTarget ?? crop.durationDays * 12;
-  const progressPct = Math.min(100, Math.max(0, Number(((gdd / maturityGDD) * 100).toFixed(1))));
+  const progressPct = Math.min(
+    100,
+    Math.max(0, Number(((gdd / maturityGDD) * 100).toFixed(1)))
+  );
 
   const weeklyInsight = useMemo(() => {
     if (!weather.length) return "Fetching weather...";
     const totalRain = weather.reduce((s, d) => s + (d.rain ?? 0), 0);
     const avgRain = totalRain / weather.length;
-    const hotDays = weather.filter((d) => (d.tmax ?? 0) >= (crop.weather?.idealTempMax ?? 999)).length;
+    const hotDays = weather.filter(
+      (d) => (d.tmax ?? 0) >= (crop.weather?.idealTempMax ?? 999)
+    ).length;
 
-    let msg = `Next 5 days: ${totalRain.toFixed(1)}mm total (${avgRain.toFixed(1)}mm/day). `;
-    msg += hotDays > 2 ? "🔥 Heat stress possible. " : "🌤️ Temps are near-optimal. ";
-    msg += totalRain > 10 ? "💧 Irrigation can be reduced." : "💧 Maintain regular irrigation.";
+    let msg = `Next 5 days: ${totalRain.toFixed(
+      1
+    )}mm total (${avgRain.toFixed(1)}mm/day). `;
+    msg += hotDays > 2
+      ? "🔥 Heat stress possible. "
+      : "🌤️ Temps are near-optimal. ";
+    msg += totalRain > 10
+      ? "💧 Irrigation can be reduced."
+      : "💧 Maintain regular irrigation.";
     return msg;
   }, [weather, crop]);
 
@@ -139,7 +180,9 @@ export default function FarmingCalendar({ defaultCropId = "paddy" }) {
             <CalendarDays className="w-6 h-6 text-emerald-700 dark:text-emerald-400" />
           </div>
           <div>
-            <h1 className="text-xl md:text-2xl font-semibold">Farming Calendar</h1>
+            <h1 className="text-xl md:text-2xl font-semibold">
+              Farming Calendar
+            </h1>
             <p className="text-sm text-neutral-600 dark:text-neutral-400">
               Smart schedule for {crop.name} • {crop.season}
             </p>
@@ -163,21 +206,39 @@ export default function FarmingCalendar({ defaultCropId = "paddy" }) {
       <div className="grid md:grid-cols-3 gap-4">
         {/* Weather Chart */}
         <div className="p-4 rounded-xl border bg-white dark:bg-neutral-900 dark:border-neutral-700 transition-colors duration-500">
-          <b className="text-sm text-neutral-700 dark:text-neutral-200">Weather Summary</b>
+          <b className="text-sm text-neutral-700 dark:text-neutral-200">
+            Weather Summary
+          </b>
           {weather.length ? (
             <div className="h-24 mt-2 dark:bg-neutral-800/50 rounded-lg p-1">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={weather}>
-                  <XAxis dataKey="date" tickFormatter={(d) => (d ? d.slice(5) : "")} stroke="gray" />
+                  <XAxis
+                    dataKey="date"
+                    tickFormatter={(d) => (d ? d.slice(5) : "")}
+                    stroke="gray"
+                  />
                   <YAxis hide />
                   <Tooltip labelFormatter={(l) => `Date: ${l}`} />
-                  <Area type="monotone" dataKey="tmax" stroke="#ff7c43" fill="#ff7c4320" />
-                  <Area type="monotone" dataKey="rain" stroke="#2f8fff" fill="#2f8fff30" />
+                  <Area
+                    type="monotone"
+                    dataKey="tmax"
+                    stroke="#ff7c43"
+                    fill="#ff7c4320"
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="rain"
+                    stroke="#2f8fff"
+                    fill="#2f8fff30"
+                  />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
           ) : (
-            <div className="text-xs text-neutral-500 mt-2">Fetching weather...</div>
+            <div className="text-xs text-neutral-500 mt-2">
+              Fetching weather...
+            </div>
           )}
         </div>
 
@@ -185,7 +246,9 @@ export default function FarmingCalendar({ defaultCropId = "paddy" }) {
         <div className="p-4 rounded-xl border bg-white dark:bg-neutral-900 dark:border-neutral-700 transition-colors duration-500">
           <div className="flex items-center gap-2 mb-1">
             <Thermometer className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-            <b className="text-neutral-700 dark:text-neutral-200">GDD Progress</b>
+            <b className="text-neutral-700 dark:text-neutral-200">
+              GDD Progress
+            </b>
           </div>
           <div className="text-sm text-neutral-700 dark:text-neutral-300">
             🌡️ {Math.round(gdd)} degree-days accumulated
@@ -199,21 +262,32 @@ export default function FarmingCalendar({ defaultCropId = "paddy" }) {
               style={{ width: `${progressPct}%` }}
             />
           </div>
-          <div className="text-xs text-neutral-600 dark:text-neutral-400 mt-1">{progressPct}% of maturity</div>
+          <div className="text-xs text-neutral-600 dark:text-neutral-400 mt-1">
+            {progressPct}% of maturity
+          </div>
         </div>
 
         {/* Insight */}
         <div className="p-4 rounded-xl border bg-white dark:bg-neutral-900 dark:border-neutral-700 transition-colors duration-500">
           <div className="flex items-center gap-2 mb-1">
             <Info className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-            <b className="text-neutral-700 dark:text-neutral-200">Weekly Insight</b>
+            <b className="text-neutral-700 dark:text-neutral-200">
+              Weekly Insight
+            </b>
           </div>
-          <p className="text-sm text-neutral-700 dark:text-neutral-300">{weeklyInsight}</p>
+          <p className="text-sm text-neutral-700 dark:text-neutral-300">
+            {weeklyInsight}
+          </p>
         </div>
       </div>
 
       {/* Timeline */}
-      <MonthGrid startDate={sowingDate} phases={crop.phases} weather={weather} onPhaseClick={setSelectedPhase} />
+      <MonthGrid
+        startDate={sowingDate}
+        phases={crop.phases}
+        weather={weather}
+        onPhaseClick={setSelectedPhase}
+      />
 
       {/* Phase Modal */}
       <AnimatePresence>
@@ -242,7 +316,9 @@ export default function FarmingCalendar({ defaultCropId = "paddy" }) {
                     </div>
                   );
                 })()}
-                <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">{selectedPhase.label}</h3>
+                <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
+                  {selectedPhase.label}
+                </h3>
               </div>
 
               <p className="text-sm text-neutral-700 dark:text-neutral-300 mb-3 leading-relaxed">
@@ -250,12 +326,15 @@ export default function FarmingCalendar({ defaultCropId = "paddy" }) {
               </p>
 
               <div className="flex justify-between text-xs text-neutral-500 dark:text-neutral-400 mb-4">
-                <span>📅 {fmt(selectedPhase.s)} → {fmt(selectedPhase.e)}</span>
+                <span>
+                  📅 {fmt(selectedPhase.s)} → {fmt(selectedPhase.e)}
+                </span>
                 <span>⏱️ {selectedPhase.duration} days</span>
               </div>
 
               <div className="bg-emerald-50 dark:bg-emerald-900/40 border border-emerald-200 dark:border-emerald-800 rounded-lg p-3 text-sm text-emerald-800 dark:text-emerald-300">
-                🌿 <b>Tip:</b> Ensure field conditions are optimal before this stage.
+                🌿 <b>Tip:</b>{" "}
+                {resolvePhaseTip(selectedPhase, crop, weather)}
               </div>
 
               <button

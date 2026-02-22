@@ -144,7 +144,7 @@ body {
   .glass {
     @apply bg-white/40 dark:bg-gray-800/40 backdrop-blur-md border border-white/30 dark:border-gray-700/50;
   }
-  .shadow-violet-glow {
+  .shadow-emerald-glow {
     box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.7);
   }
 }

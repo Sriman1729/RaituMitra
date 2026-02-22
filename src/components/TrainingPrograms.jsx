@@ -47,7 +47,7 @@ export default function TrainingPrograms() {
     <div className="relative">
       {/* Glow background */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-32 -left-32 h-[50rem] w-[50rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-fuchsia-400/30 via-violet-400/30 to-green-400/30 dark:from-fuchsia-600/30 dark:via-violet-600/20 dark:to-indigo-600/20 animate-pulse" />
+        <div className="absolute -top-32 -left-32 h-[50rem] w-[50rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-green-400/30 via-emerald-400/30 to-green-400/30 dark:from-green-600/30 dark:via-emerald-600/20 dark:to-indigo-600/20 animate-pulse" />
       </div>
 
       {/* Header */}
@@ -57,7 +57,7 @@ export default function TrainingPrograms() {
         transition={{ duration: 0.6 }}
         className="text-center mb-10 relative z-10"
       >
-        <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-violet-500 to-fuchsia-500 dark:from-fuchsia-400 dark:via-violet-400 dark:to-indigo-400 mb-3">
+        <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-emerald-500 to-green-500 dark:from-green-400 dark:via-emerald-400 dark:to-indigo-400 mb-3">
           🎓 Upcoming & Ongoing Training Programs
         </h2>
         <p className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -72,7 +72,7 @@ export default function TrainingPrograms() {
           placeholder="🔍 Search for training, provider, or type..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full p-3 rounded-xl border border-gray-300 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur-md shadow-sm focus:ring-2 focus:ring-violet-400 dark:focus:ring-fuchsia-400 transition"
+          className="w-full p-3 rounded-xl border border-gray-300 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur-md shadow-sm focus:ring-2 focus:ring-emerald-400 dark:focus:ring-green-400 transition"
         />
       </div>
 

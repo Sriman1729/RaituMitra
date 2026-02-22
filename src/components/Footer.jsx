@@ -31,17 +31,17 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative border-t border-violet-300/20 bg-gradient-to-b from-white/90 via-white/95 to-violet-50 dark:from-[#0b0b0f] dark:via-[#0b0b0f] dark:to-[#0b0b0f] text-gray-700 dark:text-white/70 transition-colors duration-500">
+    <footer className="relative border-t border-emerald-300/20 bg-gradient-to-b from-white/90 via-white/95 to-emerald-50 dark:from-[#0b0b0f] dark:via-[#0b0b0f] dark:to-[#0b0b0f] text-gray-700 dark:text-white/70 transition-colors duration-500">
       <div className="mx-auto max-w-6xl px-6 py-10 grid grid-cols-1 sm:grid-cols-3 gap-10">
 
         {/* 🌿 Brand Section */}
         <div>
           <Link
             to="/"
-            className="flex items-center gap-2 font-semibold group hover:text-violet-600 dark:hover:text-violet-300 transition-colors"
+            className="flex items-center gap-2 font-semibold group hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors"
           >
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-violet-600/20 ring-1 ring-violet-500/40 shadow-[0_0_25px_-10px_rgba(139,92,246,0.6)] group-hover:scale-105 transition-transform">
-              <Leaf className="h-4 w-4 text-violet-500 dark:text-violet-300" />
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-600/20 ring-1 ring-emerald-500/40 shadow-[0_0_25px_-10px_rgba(139,92,246,0.6)] group-hover:scale-105 transition-transform">
+              <Leaf className="h-4 w-4 text-emerald-500 dark:text-emerald-300" />
             </span>
             <span className="font-medium">Raitu Mitra</span>
             <span className="text-xs text-gray-500 dark:text-white/40 ml-2">
@@ -58,7 +58,7 @@ export default function Footer() {
         <div>
           <button
             onClick={() => toggleSection("features")}
-            className="flex justify-between items-center w-full text-left font-semibold text-lg border-b border-violet-300/30 pb-2 mb-3 text-violet-700 dark:text-violet-300 hover:text-violet-500 transition"
+            className="flex justify-between items-center w-full text-left font-semibold text-lg border-b border-emerald-300/30 pb-2 mb-3 text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 transition"
           >
             Features
             <ChevronDown
@@ -77,7 +77,7 @@ export default function Footer() {
               <li key={to}>
                 <Link
                   to={to}
-                  className="flex items-center gap-2 hover:text-violet-600 dark:hover:text-violet-300 hover:translate-x-1 transition-all duration-200"
+                  className="flex items-center gap-2 hover:text-emerald-600 dark:hover:text-emerald-300 hover:translate-x-1 transition-all duration-200"
                 >
                   <Icon size={15} /> {label}
                 </Link>
@@ -88,14 +88,14 @@ export default function Footer() {
 
         {/* 🔗 External Links */}
         <div>
-          <h3 className="font-semibold text-lg border-b border-violet-300/30 pb-2 mb-3 text-violet-700 dark:text-violet-300">
+          <h3 className="font-semibold text-lg border-b border-emerald-300/30 pb-2 mb-3 text-emerald-700 dark:text-emerald-300">
             Connect With Us
           </h3>
           <ul className="space-y-2 text-sm">
             <li>
               <Link
                 to="/farmers"
-                className="hover:text-violet-600 dark:hover:text-violet-300 transition"
+                className="hover:text-emerald-600 dark:hover:text-emerald-300 transition"
               >
                 Farmers’ Voice
               </Link>
@@ -105,7 +105,7 @@ export default function Footer() {
                 href="https://github.com/Sriman1729/new"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 hover:text-violet-600 dark:hover:text-violet-300 transition"
+                className="inline-flex items-center gap-2 hover:text-emerald-600 dark:hover:text-emerald-300 transition"
               >
                 <Github size={16} /> GitHub
               </a>
@@ -114,8 +114,8 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ✨ Violet Glow Line */}
-      <div className="absolute inset-x-0 bottom-0 h-[80px] bg-gradient-to-t from-violet-400/20 to-transparent blur-2xl pointer-events-none" />
+      {/* ✨ emerald Glow Line */}
+      <div className="absolute inset-x-0 bottom-0 h-[80px] bg-gradient-to-t from-emerald-400/20 to-transparent blur-2xl pointer-events-none" />
     </footer>
   );
 }

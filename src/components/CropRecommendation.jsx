@@ -129,7 +129,7 @@ const FilterSelect = ({ name, label, value, onChange, options, placeholder }) =>
     <label htmlFor={name} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{label}</label>
     <select
       id={name} name={name} value={value} onChange={onChange}
-      className="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-violet-500"
+      className="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
     >
       <option value="">{placeholder}</option>
       {options.map(option => (
@@ -153,7 +153,7 @@ const WaterSourceCheckboxes = ({ selected, onChange }) => {
               value={s}
               checked={selected.includes(s)}
               onChange={onChange}
-              className="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-violet-600 focus:ring-violet-500 bg-gray-100 dark:bg-gray-600"
+              className="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-emerald-600 focus:ring-emerald-500 bg-gray-100 dark:bg-gray-600"
             />
             <span>{s}</span>
           </label>
@@ -269,7 +269,7 @@ useEffect(() => {
     let cancelled = false;
     const fetchWeather = async () => {
       try {
-        const apiKey = "5e04c9e9f749a242973926ba146c8772";
+        const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${filters.district},${filters.state},IN&units=metric&appid=${apiKey}`;
         const { data } = await axios.get(url);
         if (!cancelled) { setWeather(data); setWeatherError(""); }
@@ -414,12 +414,21 @@ useEffect(() => {
   /* -------------------- UI -------------------- */
   return (
     <div className="bg-gradient-to-b from-white to-gray-50 dark:from-[#0b0b0f] dark:to-[#0b0b0f] min-h-screen">
-      {/* Purple theme vars */}
+      {/* emerald theme vars */}
       <style>{`
-        .rb-gradient { background-image: linear-gradient(90deg, #a855f7, #7c3aed, #6366f1); }
-        .text-rb-gradient { background-image: linear-gradient(90deg, #c084fc, #a78bfa, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .ring-rb { box-shadow: 0 0 0 3px rgba(124,58,237,0.25); }
-      `}</style>
+  .rb-gradient { 
+    background-image: linear-gradient(90deg, #059669, #10b981, #14b8a6); 
+  }
+  .text-rb-gradient { 
+    background-image: linear-gradient(90deg, #34d399, #6ee7b7, #5eead4); 
+    -webkit-background-clip: text; 
+    background-clip: text; 
+    color: transparent; 
+  }
+  .ring-rb { 
+    box-shadow: 0 0 0 3px rgba(16,185,129,0.35); 
+  }
+`}</style>
 
       {/* Details Modal */}
       {selectedCrop && (
@@ -525,7 +534,7 @@ useEffect(() => {
       <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
         <header className="text-center mb-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold flex items-center justify-center gap-3">
-            <Leaf className="text-violet-500 w-12 h-12"/> 
+            <Leaf className="text-emerald-500 w-12 h-12"/> 
             <span className="text-rb-gradient">Enhanced Crop Advisory</span>
           </h1>
           <p className="mt-2 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -550,8 +559,8 @@ useEffect(() => {
                   <WaterSourceCheckboxes selected={filters.waterSources} onChange={handleWaterSourceChange}/>
                 </div>
 {/* 🌾 Previous Crop History */}
-<div className="sm:col-span-2 border-t border-violet-200/70 dark:border-violet-800 pt-4 mt-4">
-  <h4 className="text-sm font-semibold text-violet-800 dark:text-violet-200 mb-2 flex items-center gap-2">
+<div className="sm:col-span-2 border-t border-emerald-200/70 dark:border-emerald-800 pt-4 mt-4">
+  <h4 className="text-sm font-semibold text-emerald-800 dark:text-emerald-200 mb-2 flex items-center gap-2">
     <Sprout className="w-4 h-4" /> Previous Crop History (Optional)
   </h4>
   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -591,7 +600,7 @@ useEffect(() => {
                       <input
                         type="number" step="0.1" name="soilPh" value={filters.soilPh}
                         onChange={handleFilterChange} placeholder="e.g., 6.5"
-                        className="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md py-2 px-3 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-violet-500"
+                        className="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md py-2 px-3 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-emerald-500"
                       />
                       <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{interpretPh(filters.soilPh)}</p>
                     </div>
@@ -600,7 +609,7 @@ useEffect(() => {
                       <input
                         type="number" step="0.1" name="soilEc" value={filters.soilEc}
                         onChange={handleFilterChange} placeholder="e.g., 0.8 dS/m"
-                        className="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md py-2 px-3 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-violet-500"
+                        className="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md py-2 px-3 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-emerald-500"
                       />
                       <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{interpretEc(filters.soilEc)}</p>
                     </div>
@@ -609,7 +618,7 @@ useEffect(() => {
                       <input
                         type="number" step="0.1" name="soilCarbon" value={filters.soilCarbon}
                         onChange={handleFilterChange} placeholder="e.g., 0.75"
-                        className="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md py-2 px-3 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-violet-500"
+                        className="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md py-2 px-3 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-emerald-500"
                       />
                       <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{interpretCarbon(filters.soilCarbon)}</p>
                     </div>
@@ -620,7 +629,7 @@ useEffect(() => {
               {/* Intelligence panel */}
               <div className="md:col-span-2 lg:col-span-1">
                 <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 h-full">
-                  <h3 className="font-semibold text-violet-800 dark:text-violet-200 mb-2 flex items-center gap-2">
+                  <h3 className="font-semibold text-emerald-800 dark:text-emerald-200 mb-2 flex items-center gap-2">
                     <Zap className="w-4 h-4"/> Intelligence Panel
                   </h3>
                   <div className="space-y-2">
@@ -634,7 +643,7 @@ useEffect(() => {
             <div className="flex items-center text-sm text-blue-700 dark:text-blue-300"><Droplets className="w-4 h-4 mr-2"/>Humidity: {weather.main.humidity}%</div>
             <div className="flex items-center text-sm text-blue-700 dark:text-blue-300"><Wind className="w-4 h-4 mr-2"/>Wind: {weather.wind.speed} m/s</div>
                         </>
-                      ) : ( <div className="text-sm text-violet-800 dark:text-violet-200">{weatherError || "Select a district for live weather."}</div> )}
+                      ) : ( <div className="text-sm text-emerald-800 dark:text-emerald-200">{weatherError || "Select a district for live weather."}</div> )}
                     </div>
                   </div>
                 </div>
@@ -656,7 +665,7 @@ useEffect(() => {
                 <div className="flex-grow flex items-center gap-3 w-full md:w-auto">
                   <button
                     onClick={handleGetRecommendations} disabled={!isFormComplete}
-                    className="w-full text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 disabled:bg-gray-400 disabled:dark:bg-gray-500 disabled:cursor-not-allowed rb-gradient hover:brightness-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-violet-300"
+                    className="w-full text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 disabled:bg-gray-400 disabled:dark:bg-gray-500 disabled:cursor-not-allowed rb-gradient hover:brightness-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300"
                   >
                     <div className="flex items-center justify-center gap-2">
                       <ChevronsRight size={20}/> Smart Crops Recommendations
@@ -698,8 +707,8 @@ useEffect(() => {
           {/* results */}
           <div className="mt-12">
             {hasSearched && (
-              <div className="bg-violet-50/60 dark:bg-violet-900/10 border-2 border-dashed border-violet-200/70 dark:border-violet-800 rounded-lg p-5 mb-8 text-center">
-                <p className="text-violet-900 dark:text-violet-100">
+              <div className="bg-emerald-50/60 dark:bg-emerald-900/10 border-2 border-dashed border-emerald-200/70 dark:border-emerald-800 rounded-lg p-5 mb-8 text-center">
+                <p className="text-emerald-900 dark:text-emerald-100">
                   For <strong className="font-semibold">{filters.district || '-'}</strong> with <strong className="font-semibold">{(filters.soilType || '-').toLowerCase()}</strong> soil and a <strong className="font-semibold">{filters.investmentBudget > 50000 ? 'high' : 'medium'} budget</strong>, we found <strong className="font-semibold">{recommendations.length}</strong> crops for <strong className="font-semibold">{season}</strong>.
                 </p>
               </div>
@@ -708,20 +717,20 @@ useEffect(() => {
             <div className="flex flex-wrap gap-3 mb-6">
               {hasSearched && recommendations.length > 0 && (
                 <>
-                  <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-violet-500">
+                  <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     <option value="">Sort By</option>
                     <option value="risk">Risk (Low → High)</option>
                     <option value="water">Water (Low → High)</option>
                     <option value="profit">Profit (High → Low)</option>
                     <option value="smartScore">Smart Score (High → Low)</option>
                   </select>
-                  <select value={riskFilter} onChange={e => setRiskFilter(e.target.value)} className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-violet-500">
+                  <select value={riskFilter} onChange={e => setRiskFilter(e.target.value)} className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     <option value="">All Risk Levels</option>
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
                   </select>
-                  <select value={waterFilter} onChange={e => setWaterFilter(e.target.value)} className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-violet-500">
+                  <select value={waterFilter} onChange={e => setWaterFilter(e.target.value)} className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     <option value="">All Water Efficiency</option>
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
@@ -758,7 +767,7 @@ useEffect(() => {
                     </div>
 
                     <div className="flex flex-wrap gap-2 mb-4">
-                      <div className={`flex items-center text-xs font-semibold px-2 py-1 rounded-full ${crop.marketDemand === 'Very High' ? 'text-purple-700 bg-purple-100 dark:text-purple-300 dark:bg-purple-900/40' : crop.marketDemand === 'High' ? 'text-green-700 bg-green-100 dark:text-green-300 dark:bg-green-900/40' : crop.marketDemand === 'Medium' ? 'text-yellow-700 bg-yellow-100 dark:text-yellow-300 dark:bg-yellow-900/40' : 'text-red-700 bg-red-100 dark:text-red-300 dark:bg-red-900/40'}`}><TrendingUp size={12} className="mr-1"/>Market: {crop.marketDemand}</div>
+                      <div className={`flex items-center text-xs font-semibold px-2 py-1 rounded-full ${crop.marketDemand === 'Very High' ? 'text-emerald-700 bg-emerald-100 dark:text-emerald-300 dark:bg-emerald-900/40' : crop.marketDemand === 'High' ? 'text-green-700 bg-green-100 dark:text-green-300 dark:bg-green-900/40' : crop.marketDemand === 'Medium' ? 'text-yellow-700 bg-yellow-100 dark:text-yellow-300 dark:bg-yellow-900/40' : 'text-red-700 bg-red-100 dark:text-red-300 dark:bg-red-900/40'}`}><TrendingUp size={12} className="mr-1"/>Market: {crop.marketDemand}</div>
                       <div className={`flex items-center text-xs font-semibold px-2 py-1 rounded-full ${crop.riskFactor === 'High' ? 'text-red-700 bg-red-100 dark:text-red-300 dark:bg-red-900/40' : crop.riskFactor === 'Medium' ? 'text-yellow-700 bg-yellow-100 dark:text-yellow-300 dark:bg-yellow-900/40' : 'text-green-700 bg-green-100 dark:text-green-300 dark:bg-green-900/40'}`}><Shield size={12} className="mr-1"/>Risk: {crop.riskFactor}</div>
                       <div className={`flex items-center text-xs font-semibold px-2 py-1 rounded-full ${(crop.waterEfficiency || '').includes('Very High') ? 'text-blue-700 bg-blue-100 dark:text-blue-300 dark:bg-blue-900/40' : (crop.waterEfficiency || '').includes('High') ? 'text-blue-600 bg-blue-100 dark:text-blue-300 dark:bg-blue-900/40' : 'text-orange-700 bg-orange-100 dark:text-orange-300 dark:bg-orange-900/40'}`}><Droplets size={12} className="mr-1"/>{crop.waterEfficiency} Water</div>
                     </div>
@@ -781,7 +790,7 @@ useEffect(() => {
         <div className="relative w-full h-3 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
           {/* Profit (left side) */}
           <div
-            className="absolute left-0 top-0 h-full bg-purple-500 dark:bg-purple-600 transition-all duration-700 ease-out"
+            className="absolute left-0 top-0 h-full bg-emerald-500 dark:bg-emerald-600 transition-all duration-700 ease-out"
             style={{ width: `${profitPercent}%` }}
           ></div>
 
@@ -795,7 +804,7 @@ useEffect(() => {
         {/* Labels */}
         <div className="flex justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
           <span className="flex items-center gap-1">
-            <span className="inline-block w-2.5 h-2.5 rounded-full bg-purple-500 dark:bg-purple-600"></span>
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 dark:bg-emerald-600"></span>
             Profit: ₹{profit.toLocaleString()}
           </span>
           <span className="flex items-center gap-1">
@@ -807,8 +816,6 @@ useEffect(() => {
     );
   })()}
 </div>
-
-
 
                     <div className="bg-gray-50 dark:bg-gray-700/50 rounded-md p-3 mb-4">
                       <h4 className="font-semibold text-sm mb-2 text-gray-700 dark:text-gray-300">Weather Forecast</h4>
@@ -841,3 +848,4 @@ useEffect(() => {
     </div>
   );
 }
+

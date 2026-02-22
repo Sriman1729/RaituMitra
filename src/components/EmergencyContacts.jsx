@@ -76,7 +76,7 @@ export default function EmergencyContacts() {
     <div className="relative p-4 md:p-10">
       {/* ✨ Aurora Glow Background */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -left-20 h-[50rem] w-[50rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-fuchsia-500 via-violet-500 to-indigo-500 dark:opacity-30" />
+        <div className="absolute -top-40 -left-20 h-[50rem] w-[50rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-green-500 via-emerald-500 to-indigo-500 dark:opacity-30" />
       </div>
 
       {/* 🏷 Header */}
@@ -86,7 +86,7 @@ export default function EmergencyContacts() {
         transition={{ duration: 0.6 }}
         className="text-center mb-10 relative z-10"
       >
-        <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-fuchsia-500 to-violet-500 mb-3">
+        <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-green-500 to-emerald-500 mb-3">
           🚨 Emergency Contacts
         </h2>
         <p className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -104,7 +104,7 @@ export default function EmergencyContacts() {
             transition={{ delay: i * 0.1, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-violet-500 dark:from-fuchsia-400 dark:to-violet-400">
+            <h3 className="text-2xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-emerald-500 dark:from-green-400 dark:to-emerald-400">
               {sectionTitles[sectionKey]}
             </h3>
 

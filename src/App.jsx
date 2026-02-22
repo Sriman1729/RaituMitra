@@ -26,7 +26,6 @@ import AdminLogin from "./components/AdminLogin";
 import FarmerLogin from "./components/FarmerLogin";
 import Profile from "./components/Profile";
 import ProtectedFarmerRoute from "./components/ProtectedFarmerRoute";
-import FarmerFarmMap from "./components/FarmerFarmMap";
 
 // 🌗 Context + Animations
 import { DarkModeProvider } from "./context/DarkModeContext";
@@ -52,10 +51,10 @@ function NotFound() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
         className={`relative text-8xl font-extrabold tracking-tight ${
-          glitch ? "text-fuchsia-400 blur-[1.5px]" : "text-white"
+          glitch ? "text-green-400 blur-[1.5px]" : "text-white"
         }`}
       >
-        4<span className="text-violet-400">0</span>4
+        4<span className="text-emerald-400">0</span>4
       </motion.h1>
 
       <motion.p
@@ -75,7 +74,7 @@ function NotFound() {
       >
         <Link
           to="/"
-          className="px-6 py-2.5 rounded-full bg-gradient-to-r from-fuchsia-600 via-violet-600 to-indigo-600 text-white shadow-lg hover:scale-[1.05]"
+          className="px-6 py-2.5 rounded-full bg-gradient-to-r from-green-600 via-emerald-600 to-indigo-600 text-white shadow-lg hover:scale-[1.05]"
         >
           Back to Home
         </Link>
@@ -180,16 +179,6 @@ export default function App() {
                 }
               />
 
-              <Route
-                path="/farm-map"
-                element={
-                  <ProtectedFarmerRoute>
-                    <PageTransition>
-                      <FarmerFarmMap />
-                    </PageTransition>
-                  </ProtectedFarmerRoute>
-                }
-              />
 
               {/* 🌿 Farmer Tools */}
               <Route path="/crop" element={<PageTransition><CropRecommendation /></PageTransition>} />

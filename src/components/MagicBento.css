@@ -1,8 +1,8 @@
 :root {
   /* 🎨 Brand & Theme Colors */
-  --purple-fusion-1: #b832fa;
-  --purple-fusion-2: #7a4bff;
-  --purple-fusion-3: #ff7ae9;
+  --emerald-fusion-1: #b832fa;
+  --emerald-fusion-2: #7a4bff;
+  --emerald-fusion-3: #ff7ae9;
 
   --white: #ffffff;
   --text-dark: #1a1025;
@@ -122,10 +122,10 @@
   /* 💎 Infinite Shimmer Gradient */
   background: linear-gradient(
     90deg,
-    var(--purple-fusion-1),
-    var(--purple-fusion-2),
-    var(--purple-fusion-3),
-    var(--purple-fusion-1)
+    var(--emerald-fusion-1),
+    var(--emerald-fusion-2),
+    var(--emerald-fusion-3),
+    var(--emerald-fusion-1)
   );
   background-size: 300% 100%;
   background-position: 0% 50%;
@@ -157,7 +157,7 @@
   display: inline-block;
   position: relative;
 
-  /* 💜 Smooth Purple–Fuchsia Gradient */
+  /* 💜 Smooth emerald–green Gradient */
   background: linear-gradient(
     90deg,
     #b832fa,
