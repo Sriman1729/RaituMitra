@@ -9,7 +9,6 @@ export default function DiseaseDetect() {
   const [resp, setResp] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [showGradcam, setShowGradcam] = useState(false);
 
   const fileInputRef = useRef();
 
@@ -26,7 +25,6 @@ export default function DiseaseDetect() {
     setOrigPreview(URL.createObjectURL(f));
     setResp(null);
     setError(null);
-    setShowGradcam(false);
   }
 
   async function analyze() {
@@ -110,42 +108,19 @@ export default function DiseaseDetect() {
       {/* RESULT SECTION */}
       {resp && (
         <div className="grid md:grid-cols-2 gap-10 items-start">
+
           {/* LEFT SIDE */}
           <div className="space-y-6">
             <div>
               <h4 className="font-semibold mb-2">Uploaded Image</h4>
-              <img
-                src={`data:image/jpeg;base64,${resp.leaf_preview}`}
-                alt="leaf"
-                className="rounded-xl shadow-md"
-              />
+              {origPreview && (
+                <img
+                  src={origPreview}
+                  alt="leaf"
+                  className="rounded-xl shadow-md"
+                />
+              )}
             </div>
-
-            {resp.gradcam && (
-              <div>
-                <button
-                  onClick={() => setShowGradcam(!showGradcam)}
-                  className="mb-3 px-4 py-2 text-sm border rounded-lg hover:bg-gray-100 transition"
-                >
-                  {showGradcam
-                    ? "Hide Model Attention"
-                    : "Show Model Attention (Grad-CAM)"}
-                </button>
-
-                {showGradcam && (
-                  <div>
-                    <h4 className="font-semibold mb-2">
-                      Model Attention
-                    </h4>
-                    <img
-                      src={`data:image/jpeg;base64,${resp.gradcam}`}
-                      alt="gradcam"
-                      className="rounded-xl shadow-md"
-                    />
-                  </div>
-                )}
-              </div>
-            )}
           </div>
 
           {/* RIGHT CARD */}
@@ -210,6 +185,7 @@ export default function DiseaseDetect() {
               </ul>
             </div>
 
+            {/* TOP 3 */}
             <div>
               <h4 className="font-semibold mb-2">
                 Top 3 Predictions
@@ -245,7 +221,6 @@ export default function DiseaseDetect() {
                 setResp(null);
                 setFile(null);
                 setOrigPreview(null);
-                setShowGradcam(false);
               }}
               className="mt-6 w-full bg-green-600 text-white py-2 rounded-lg"
             >
