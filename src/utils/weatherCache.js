@@ -1,34 +1,36 @@
-const CACHE_DURATION = 36 * 60 * 60 * 1000;
+// utils/weatherCache.js
 
-const WEATHER_CACHE_KEY = (lat, lon) =>
-  `rm.weather.${lat.toFixed(2)}_${lon.toFixed(2)}`;
+const CACHE_PREFIX = "rm_weather_";
+const TTL = 30 * 60 * 1000; // 30 minutes
 
-export function saveWeatherCache(lat, lon, payload) {
-  const now = Date.now();
-
-  localStorage.setItem(
-    WEATHER_CACHE_KEY(lat, lon),
-    JSON.stringify({
-      data: payload,
-      fetchedAt: now,
-      expiresAt: now + CACHE_DURATION,
-    })
-  );
-}
-
-export function getWeatherCache(lat, lon) {
-  const raw = localStorage.getItem(WEATHER_CACHE_KEY(lat, lon));
-  if (!raw) return null;
-
+export const saveWeatherCache = (lat, lon, data) => {
   try {
-    const parsed = JSON.parse(raw);
-    if (Date.now() > parsed.expiresAt) {
-      localStorage.removeItem(WEATHER_CACHE_KEY(lat, lon));
+    const key = `${CACHE_PREFIX}${lat}_${lon}`;
+    const payload = {
+      ...data,
+      timestamp: Date.now(),
+    };
+    localStorage.setItem(key, JSON.stringify(payload));
+  } catch (err) {
+    console.error("Cache save failed", err);
+  }
+};
+
+export const getWeatherCache = (lat, lon) => {
+  try {
+    const key = `${CACHE_PREFIX}${lat}_${lon}`;
+    const cached = localStorage.getItem(key);
+    if (!cached) return null;
+
+    const parsed = JSON.parse(cached);
+
+    if (Date.now() - parsed.timestamp > TTL) {
+      localStorage.removeItem(key);
       return null;
     }
+
     return parsed;
   } catch {
-    localStorage.removeItem(WEATHER_CACHE_KEY(lat, lon));
     return null;
   }
-}
+};

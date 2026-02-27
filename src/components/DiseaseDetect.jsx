@@ -65,15 +65,13 @@ export default function DiseaseDetect() {
 
   return (
     <div className="max-w-6xl mx-auto p-8">
-
       <h2 className="text-2xl font-bold text-center mb-8">
         Pest & Disease Detector
       </h2>
 
-      {/* ================= UPLOAD SECTION ================= */}
+      {/* UPLOAD SECTION */}
       {!resp && (
         <div className="text-center space-y-6">
-
           <div
             className="border-2 border-dashed p-10 rounded-xl cursor-pointer hover:bg-gray-50 transition"
             onClick={() => fileInputRef.current.click()}
@@ -85,9 +83,7 @@ export default function DiseaseDetect() {
               accept="image/*"
               capture="environment"
               className="hidden"
-              onChange={(e) =>
-                handleFile(e.target.files?.[0])
-              }
+              onChange={(e) => handleFile(e.target.files?.[0])}
             />
           </div>
 
@@ -107,23 +103,17 @@ export default function DiseaseDetect() {
             {loading ? "Analyzing..." : "Analyze Image"}
           </button>
 
-          {error && (
-            <div className="text-red-600">{error}</div>
-          )}
+          {error && <div className="text-red-600">{error}</div>}
         </div>
       )}
 
-      {/* ================= RESULT SECTION ================= */}
+      {/* RESULT SECTION */}
       {resp && (
         <div className="grid md:grid-cols-2 gap-10 items-start">
-
           {/* LEFT SIDE */}
           <div className="space-y-6">
-
             <div>
-              <h4 className="font-semibold mb-2">
-                Uploaded Image
-              </h4>
+              <h4 className="font-semibold mb-2">Uploaded Image</h4>
               <img
                 src={`data:image/jpeg;base64,${resp.leaf_preview}`}
                 alt="leaf"
@@ -134,9 +124,7 @@ export default function DiseaseDetect() {
             {resp.gradcam && (
               <div>
                 <button
-                  onClick={() =>
-                    setShowGradcam(!showGradcam)
-                  }
+                  onClick={() => setShowGradcam(!showGradcam)}
                   className="mb-3 px-4 py-2 text-sm border rounded-lg hover:bg-gray-100 transition"
                 >
                   {showGradcam
@@ -160,12 +148,10 @@ export default function DiseaseDetect() {
             )}
           </div>
 
-          {/* RIGHT RESULT CARD */}
+          {/* RIGHT CARD */}
           <div
             className={`rounded-xl shadow-lg p-6 border-t-4 ${
-              isHealthy
-                ? "border-green-500"
-                : "border-red-500"
+              isHealthy ? "border-green-500" : "border-red-500"
             }`}
           >
             <div className="text-center mb-6">
@@ -174,40 +160,30 @@ export default function DiseaseDetect() {
                   <div className="text-green-600 text-sm font-semibold mb-2">
                     HEALTHY PLANT
                   </div>
-                  <div className="text-green-600 text-5xl">
-                    ✔
-                  </div>
+                  <div className="text-green-600 text-5xl">✔</div>
                 </>
               ) : (
                 <>
                   <div className="text-red-600 text-sm font-semibold mb-2">
                     DISEASE DETECTED
                   </div>
-                  <div className="text-red-600 text-5xl">
-                    ✖
-                  </div>
+                  <div className="text-red-600 text-5xl">✖</div>
                 </>
               )}
             </div>
 
             <div className="bg-gray-100 rounded-lg p-4 mb-4 text-center">
-              <div className="text-xs text-gray-500">
-                PLANT TYPE
-              </div>
+              <div className="text-xs text-gray-500">PLANT TYPE</div>
               <div className="text-lg font-semibold">
                 {resp.best.crop}
               </div>
             </div>
 
             <div className="bg-gray-100 rounded-lg p-4 mb-4 text-center">
-              <div className="text-xs text-gray-500">
-                CONDITION
-              </div>
+              <div className="text-xs text-gray-500">CONDITION</div>
               <div
                 className={`font-semibold ${
-                  isHealthy
-                    ? "text-green-600"
-                    : "text-red-600"
+                  isHealthy ? "text-green-600" : "text-red-600"
                 }`}
               >
                 {resp.best.friendly}
@@ -234,7 +210,6 @@ export default function DiseaseDetect() {
               </ul>
             </div>
 
-            {/* TOP 3 WITH PROGRESS BARS */}
             <div>
               <h4 className="font-semibold mb-2">
                 Top 3 Predictions
@@ -280,7 +255,7 @@ export default function DiseaseDetect() {
         </div>
       )}
 
-      {/* ================= TIPS SECTION ================= */}
+      {/* TIPS SECTION */}
       <div className="mt-16 bg-gray-50 p-6 rounded-xl shadow-sm">
         <h3 className="text-lg font-semibold mb-6 text-center">
           Tips for Best Results
