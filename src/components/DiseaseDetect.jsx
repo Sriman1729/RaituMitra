@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import demoLeaf from "../assets/demo-leaf.jpeg";
 
-const API_URL = "http://127.0.0.1:8000/predict";
+const API_URL = "https://raitumitra-backend.onrender.com/predict";
 
 export default function DiseaseDetect() {
   const [file, setFile] = useState(null);
